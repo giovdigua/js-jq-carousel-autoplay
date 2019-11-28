@@ -1,4 +1,34 @@
 $(document).ready(function() {
+    var clock = setInterval(function () {
+        //Variables for images
+        var index = $('img');
+        var current = $('img.active');
+        var next;
+        //Variables for the bullets
+        var bulletIndex = $('.bullet');
+        var currentBullet = $('.bullet.select');
+        var nextBullet;
+
+
+        if (current.is(index.last())) {
+            next = index.first();
+        }else{
+            next = current.next('img');
+
+        }
+
+        if (currentBullet.is(bulletIndex.last())) {
+            nextBullet = bulletIndex.first();
+        } else {
+            nextBullet = currentBullet.next('.bullet');
+        }
+
+        current.removeClass('active');
+        next.addClass('active');
+        currentBullet.removeClass('select');
+        nextBullet.addClass('select');
+    },3000);
+
     //Prec
     $('#leftContainer').click(function() {
 
